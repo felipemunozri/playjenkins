@@ -1,7 +1,8 @@
 pipeline {
 
   environment {
-    registry = "192.168.1.81:5000/justme/myweb"
+    registry = 'felipemunozri/playjenkins'
+    registryCredential = 'dockerhub_id'
     dockerImage = ""
   }
 
@@ -11,7 +12,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/justmeandopensource/playjenkins.git'
+        git 'https://github.com/felipemunozri/playjenkins.git'
       }
     }
 
@@ -26,7 +27,7 @@ pipeline {
     stage('Push Image') {
       steps{
         script {
-          docker.withRegistry( "" ) {
+          docker.withRegistry('', registryCredential) {
             dockerImage.push()
           }
         }
