@@ -13,6 +13,7 @@ pipeline {
     stage('Checkout Source') {
       steps {
         git 'https://github.com/felipemunozri/playjenkins.git'
+        // checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/felipemunozri/playjenkins.git']]])
       }
     }
 
@@ -38,7 +39,7 @@ pipeline {
     stage('Deploy App') {
       steps {
         script {
-          kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "autocluster_id")
+          kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "autocluster_config")
         }
       }
     }
