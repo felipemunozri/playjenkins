@@ -17,7 +17,7 @@ spec:
         app: myweb
     spec:
       containers:
-      - image: felipemunozri/playjenkins
+      - image: felipemunozri/playjenkins:$BUILD_NUMBER
         imagePullPolicy: Always
         name: myweb
 
