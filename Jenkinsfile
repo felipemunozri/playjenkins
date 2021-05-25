@@ -38,7 +38,7 @@ pipeline {
     stage('Deploy App') {
       steps {
         script {
-          kubernetesDeploy(configs: "myweb.yml", kubeconfigId: "autocluster_config")
+          kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "autocluster_config")
         }
       }
     }
